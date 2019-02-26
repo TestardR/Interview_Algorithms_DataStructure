@@ -7,6 +7,21 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+// Solution 1
+// function palindrome(str) {
+//   let reversedStr = str
+//     .split('')
+//     .reverse()
+//     .join('');
+//   return str === reversedStr;
+// }
 
+function palindrome(str) {
+  // .every() for every element in the array we call the function inside every(). We receive each character (char) with its index (i). The first time the loop runs, char = 'a'
+  // and i = 0
+  // Not the best of solving the problem, as we only need to iterate through half of the word. Here we will iterate through each character until the end, lack of performance.
+  return str.split('').every((char, i) => char === str[str.length - i - 1]);
+}
+
+console.log(palindrome('abba'));
 module.exports = palindrome;
