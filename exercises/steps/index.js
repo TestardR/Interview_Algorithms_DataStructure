@@ -17,6 +17,26 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  // From 0 to n (iterate through rows)
+  for (let row = 0; row < n; row++) {
+    // Create an empty string, 'stair'
+    let stair = '';
+    // From 0 to n (iterate through columns)
+    for (let column = 0; column < n; column++) {
+      // If the current column is equal to or less than the current row
+      if (column <= row) {
+        // Add a '#' to 'stair'
+        stair += '#';
+      } else {
+        // Add a space to 'stair'
+        stair += ' ';
+      }
+    }
+    console.log(stair);
+  }
+}
+
+console.log(steps(8));
 
 module.exports = steps;
