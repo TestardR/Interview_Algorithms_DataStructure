@@ -15,6 +15,55 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {}
+function matrix(n) {
+  const results = [];
+  // create arrays of an array according to n
+  for (let i = 0; i < n; i++) {
+    results.push([]);
+  }
+
+  // set variables that we will be changing upon targeting positions in the arrays
+  let counter = 1;
+  let startColumn = 0;
+  let endColumn = n - 1;
+  let startRow = 0;
+  let endRow = n - 1;
+
+  // overall settings
+  while (startColumn <= endColumn && startRow <= endRow) {
+    // 4 loops : 1st for the first row, 2nd for the right side, 3rd for the bottom, 4th for the left side
+    // loop responsible for our first row
+    for (let i = startColumn; i <= endColumn; i++) {
+      results[startRow][i] = counter;
+      counter++;
+    }
+    startRow++;
+
+    // Right column
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][endColumn] = counter;
+      counter++;
+    }
+    endColumn--;
+
+    // Bottom row
+    for (let i = endColumn; i >= startColumn; i--) {
+      results[endRow][i] = counter;
+      counter++;
+    }
+    endRow--;
+
+    // start column
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][startColumn] = counter;
+      counter++;
+    }
+    startColumn++;
+  }
+
+  return results;
+}
+
+console.log(matrix(3));
 
 module.exports = matrix;
