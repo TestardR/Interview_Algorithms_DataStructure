@@ -19,7 +19,7 @@ class Queue {
 
   // return to work with the record we just removed
   remove(record) {
-    return this.data.pop(record);
+    return this.data.pop();
   }
 }
 
