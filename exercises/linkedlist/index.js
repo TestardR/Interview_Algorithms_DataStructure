@@ -15,7 +15,7 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    // On inserting first, we want our new Node to be linked to the head / become the head
+    // On inserting first, we want our new Node to become the head
     this.head = new Node(data, this.head);
   }
 
@@ -44,6 +44,7 @@ class LinkedList {
       }
       node = node.next;
     }
+    return node;
   }
 
   clear() {
@@ -72,6 +73,18 @@ class LinkedList {
       node = node.next;
     }
     previous.next = null;
+  }
+
+  insertLast(data) {
+    const last = this.getLast();
+
+    if (last) {
+      // There are some existing nodes in our chain
+      last.next = new Node(data);
+    } else {
+      // The chain is empty
+      this.head = new Node(data);
+    }
   }
 }
 
