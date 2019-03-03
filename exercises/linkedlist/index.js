@@ -13,6 +13,21 @@ class LinkedList {
   constructor() {
     this.head = null;
   }
+
+  insertFirst(data) {
+    // On inserting first, we want our new Node to be linked to the head / become the head
+    this.head = new Node(data, this.head);
+  }
+
+  size() {
+    let counter = 0;
+    let node = this.head;
+    while (node) {
+      counter++;
+      node = node.next;
+    }
+    return counter;
+  }
 }
 
 module.exports = { Node, LinkedList };
