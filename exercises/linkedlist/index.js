@@ -104,6 +104,25 @@ class LinkedList {
     }
     return null;
   }
+
+  removeAt(index) {
+    if (!this.head) {
+      return null;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    const previous = this.getAt(index - 1);
+    // if the index is out of bounce or if the index is the last one
+    if (!previous || !previous.next) {
+      return;
+    }
+    // jump over one node (the one that we want to remove)
+    previous.next = previous.next.next;
+  }
 }
 
 module.exports = { Node, LinkedList };
